@@ -1,7 +1,7 @@
 ---
 title: "AIエージェントで「報告の手間ゼロ」のデイリーレポートを実現した話"
 slug: "ai-agent-daily-report-zero-overhead"
-author: "武田 瞬一"
+author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-06-23"
 updated: "2026-06-23"
@@ -281,5 +281,5 @@ AIエージェントが誤ってデータを更新・削除するリスクをア
 
 ---
 
-> **著者**: 武田 瞬一（[@Shunichi-Takeda](https://github.com/Shunichi-Takeda)）
+> **著者**: 武田 峻一（[@Shunichi-Takeda](https://github.com/Shunichi-Takeda)）
 > Stock社 CTO。ナレカン・Stockの開発チームを率いる。

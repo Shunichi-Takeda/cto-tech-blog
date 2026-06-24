@@ -1,7 +1,7 @@
 ---
 title: "AIエージェントが「見えない不具合」をどう見つけたか — PDFの透明テキストレイヤーをデバッグ可視化で解決した話"
 slug: "ai-agent-invisible-ocr-debug"
-author: "武田 俊一"
+author: "武田 峻一"
 author_github: "shunichi-takeda"
 date: "2026-06-24"
 stage: "draft"

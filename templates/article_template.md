@@ -1,7 +1,7 @@
 ---
 title: "記事タイトル"
 slug: "url-friendly-slug"
-author: "武田 瞬一"
+author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "YYYY-MM-DD"
 updated: "YYYY-MM-DD"
@@ -68,5 +68,5 @@ published_url: ""
 
 ---
 
-> **著者**: 武田 瞬一（[@Shunichi-Takeda](https://github.com/Shunichi-Takeda)）
+> **著者**: 武田 峻一（[@Shunichi-Takeda](https://github.com/Shunichi-Takeda)）
 > Stock社 CTO
