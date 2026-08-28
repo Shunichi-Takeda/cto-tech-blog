@@ -1,0 +1,45 @@
+name: Zenn 記事チェック
+
+on:
+  pull_request:
+    paths:
+      - "articles/**"
+      - "config/zenn.json"
+      - "scripts/**"
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: frontmatter と公開ガードの検証
+        run: python3 scripts/validate_zenn.py
+      - name: 公開済み索引が最新か検査
+        if: github.event_name == 'push'
+        run: python3 scripts/update_index.py --check
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Zenn CLI の lint
+        run: |
+          npm install --no-audit --no-fund
+          npx zenn --version
+      - name: "published: true になった記事を一覧表示"
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "### この PR で published: true の記事" >> "$GITHUB_STEP_SUMMARY"
+          found=0
+          for f in articles/*.md; do
+            [ -e "$f" ] || continue
+            if grep -qE '^published:\s*true' "$f"; then
+              echo "- \`$f\`" >> "$GITHUB_STEP_SUMMARY"
+              found=1
+            fi
+          done
+          [ "$found" = 1 ] || echo "- なし（すべて下書き）" >> "$GITHUB_STEP_SUMMARY"

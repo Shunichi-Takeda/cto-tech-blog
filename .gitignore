@@ -1,0 +1,6 @@
+# cto-tech-blog
+.DS_Store
+
+node_modules/
+.zenn/
+__pycache__/

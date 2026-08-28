@@ -1,0 +1,14 @@
+{
+  "name": "cto-tech-blog",
+  "private": true,
+  "description": "Stock Tech Blog（Zenn Publication: stock_inc）の公開記事リポジトリ",
+  "scripts": {
+    "preview": "zenn preview",
+    "new:article": "zenn new:article",
+    "validate": "python3 scripts/validate_zenn.py",
+    "index": "python3 scripts/update_index.py"
+  },
+  "devDependencies": {
+    "zenn-cli": "^0.1.158"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "publication_name": "stock_inc",
+  "author": {
+    "name": "武田 峻一",
+    "github": "Shunichi-Takeda"
+  },
+  "footer": {
+    "utm_params": {
+      "utm_source": "zenn",
+      "utm_medium": "referral",
+      "utm_campaign": "stock_tech_blog",
+      "utm_content": "{slug}"
+    },
+    "links": {
+      "stock": {
+        "base_url": "https://www.stock-app.info/"
+      },
+      "narekan": {
+        "base_url": "https://www.narekan.info/"
+      },
+      "recruit": {
+        "base_url": "https://www.stock-inc.co.jp/recruit/"
+      }
+    },
+    "template": "---\n\n本記事は [Stock Tech Blog](https://zenn.dev/p/stock_inc) の記事です。株式会社Stockは、チームの情報を最も簡単に管理できる [Stock]({stock_url}) と、ナレッジを育て企業ポテンシャルを開放する [ナレカン]({narekan_url}) の2プロダクトを開発しています。\n\n一緒に開発するエンジニアを探しています → [採用情報]({recruit_url})\n\n著者: {author_name}（[@{author_github}](https://github.com/{author_github})／株式会社Stock CTO）\n"
+  },
+  "category_to_type": {
+    "engineering": "tech",
+    "architecture": "tech",
+    "devops": "tech",
+    "ai-agents": "tech",
+    "postmortem": "tech",
+    "team": "idea"
+  },
+  "category_to_emoji": {
+    "engineering": "🛠️",
+    "architecture": "🏗️",
+    "devops": "🚢",
+    "ai-agents": "🤖",
+    "postmortem": "🔥",
+    "team": "👥"
+  },
+  "tag_to_topic": {
+    "AWS": "aws",
+    "ECS": "ecs",
+    "ECR": "ecr",
+    "Aurora": "aurora",
+    "S3": "s3",
+    "CloudWatch": "cloudwatch",
+    "Bedrock": "bedrock",
+    "PostgreSQL": "postgresql",
+    "Rails": "rails",
+    "Ruby": "ruby",
+    "React": "react",
+    "TypeScript": "typescript",
+    "JavaScript": "javascript",
+    "Python": "python",
+    "Docker": "docker",
+    "Terraform": "terraform",
+    "CI/CD": "cicd",
+    "GitHub Actions": "githubactions",
+    "AI": "ai",
+    "LLM": "llm",
+    "MCP": "mcp",
+    "RAG": "rag",
+    "OCR": "ocr",
+    "PDF": "pdf",
+    "HexaPDF": "ruby",
+    "OAuth": "oauth",
+    "Claude": "claude",
+    "Claude Code": "claudecode",
+    "AIエージェント": "ai",
+    "devops": "devops",
+    "architecture": "architecture",
+    "postmortem": "postmortem",
+    "パフォーマンス": "performance",
+    "セキュリティ": "security",
+    "テスト": "test",
+    "デバッグ": "debug",
+    "コードレビュー": "codereview",
+    "リモートワーク": "リモートワーク",
+    "採用": "採用",
+    "組織": "組織",
+    "チーム開発": "チーム開発",
+    "設計": "設計",
+    "運用": "運用",
+    "プロジェクトマネジメント": "マネジメント",
+    "開発プロセス": "チーム開発",
+    "個人情報": "プライバシー",
+    "NLP": "nlp",
+    "検索": "検索",
+    "エージェント": "aiagent",
+    "ブラウザ自動化": "自動化",
+    "自動化": "自動化",
+    "プロンプト": "promptengineering",
+    "オントロジー": "オントロジー",
+    "マルチテナント": "multitenant",
+    "見積もり": "マネジメント",
+    "意思決定": "意思決定",
+    "画像処理": "imageprocessing",
+    "業務改善": "業務改善",
+    "Amazon Bedrock": "bedrock",
+    "Zenn": "zenn"
+  }
+}
