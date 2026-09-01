@@ -3,7 +3,8 @@ title: "検索ヒット率をLLMで底上げしつつコストを抑える『安
 emoji: "💰"
 type: "tech"
 topics: ["llm", "ai", "performance", "検索"]
-published: false
+published: true
+published_at: "2026-09-09 10:00"
 publication_name: "stock_inc"
 ---
 
