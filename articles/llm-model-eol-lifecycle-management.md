@@ -3,7 +3,8 @@ title: "LLMにもEOLがある — モデルを依存ライブラリとして管�
 emoji: "⏳"
 type: "tech"
 topics: ["llm", "aws", "bedrock", "ai", "運用"]
-published: false
+published: true
+published_at: "2026-09-30 10:00"
 publication_name: "stock_inc"
 ---
 
