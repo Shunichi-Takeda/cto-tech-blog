@@ -3,7 +3,8 @@ title: "AIエージェントで「報告の手間ゼロ」のデイリーレポ�
 emoji: "📊"
 type: "tech"
 topics: ["ai", "mcp", "llm", "チーム開発", "リモートワーク"]
-published: false
+published: true
+published_at: "2026-10-21 10:00"
 publication_name: "stock_inc"
 ---
 
