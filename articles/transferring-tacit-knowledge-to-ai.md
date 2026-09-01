@@ -3,7 +3,8 @@ title: "完成版を学習させても精度は上がらない — 暗黙知は�
 emoji: "🧠"
 type: "tech"
 topics: ["ai", "llm", "組織", "業務改善", "promptengineering"]
-published: false
+published: true
+published_at: "2026-09-02 10:00"
 publication_name: "stock_inc"
 ---
 
