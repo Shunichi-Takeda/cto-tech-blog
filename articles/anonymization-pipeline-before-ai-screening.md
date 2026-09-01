@@ -3,7 +3,8 @@ title: "AIで採用スクリーニングする前に — 個人情報を守る�
 emoji: "🕵️"
 type: "tech"
 topics: ["ai", "security", "llm", "プライバシー", "nlp"]
-published: false
+published: true
+published_at: "2026-09-16 10:00"
 publication_name: "stock_inc"
 ---
 
