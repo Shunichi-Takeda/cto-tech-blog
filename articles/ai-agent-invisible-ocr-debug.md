@@ -3,7 +3,8 @@ title: "AIエージェントが「見えない不具合」をどう見つけた�
 emoji: "🔍"
 type: "tech"
 topics: ["ai", "ocr", "pdf", "ruby", "debug"]
-published: false
+published: true
+published_at: "2026-10-14 10:00"
 publication_name: "stock_inc"
 ---
 
