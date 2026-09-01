@@ -3,7 +3,8 @@ title: "スキャンPDFのOCRが「読めない」3つの理由 — エンジン
 emoji: "📄"
 type: "tech"
 topics: ["ocr", "pdf", "imageprocessing", "運用"]
-published: false
+published: true
+published_at: "2026-09-23 10:00"
 publication_name: "stock_inc"
 ---
 
