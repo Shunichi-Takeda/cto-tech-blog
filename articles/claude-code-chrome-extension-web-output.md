@@ -3,7 +3,8 @@ title: "AI活用の知見をClaude内に閉じ込めない — Claude Codeと実
 emoji: "🌐"
 type: "tech"
 topics: ["ai", "mcp", "aiagent", "自動化"]
-published: false
+published: true
+published_at: "2026-10-07 10:00"
 publication_name: "stock_inc"
 ---
 
