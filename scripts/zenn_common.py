@@ -1,4 +1,4 @@
-"""cto-tech-blog の草案 frontmatter と Zenn frontmatter を扱う共通処理。
+"""草案の frontmatter と Zenn frontmatter を扱う共通処理。
 
 外部ライブラリに依存しない（PyYAML なしで動く）ことを条件にしている。
 草案の frontmatter は「文字列 or 文字列リスト」だけで構成されているため、
