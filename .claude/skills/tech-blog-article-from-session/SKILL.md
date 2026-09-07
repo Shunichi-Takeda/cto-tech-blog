@@ -70,7 +70,7 @@ description: ユーザーが指定した特定のClaude Codeセッション（1�
 合意した内容で記事ファイルを作成する。
 
 ### 5-1. 作成先とテンプレート
-- `ideas/`（まだ書くと決めていない）→ **非公開リポジトリ**（既定 `../stock-ontology`）の `templates/idea_template.md` ベースで `articles/ideas/YYYY-MM-DD_slug.md`（`stage: idea`）。本リポジトリには置かない。
+- ネタ段階（まだ書くと決めていない）→ **リポジトリ外のネタ管理先**（Stock ノート等）に起票する。本リポジトリには置かない。ファイルとして残す必要がある場合は、ユーザーに内容を提示して移送を委ねる。
 - `drafts/` → `templates/article_template.md` ベース、`articles/drafts/YYYY-MM-DD_slug.md`（`stage: draft`）。本文は「課題 → アプローチ → 結果 → 学び」で埋める。
 
 ### 5-2. 命名・Frontmatter（`AGENTS.md` §3, §4）
@@ -147,7 +147,7 @@ python3 scripts/draft_to_zenn.py articles/drafts/<草案>.md   # → articles/<s
 python3 scripts/validate_zenn.py                             # エラー0を確認
 ```
 
-> ⚠️ **本リポジトリは public である。** 草案を `articles/drafts/` に置いた時点で、Draft PR であっても誰でも読める。書くと決めていないネタ・公開留保がかかったもの・取り下げたものは、非公開リポジトリで別管理する（`AGENTS.md` §2）。
+> ⚠️ **本リポジトリは public である。** 草案を `articles/drafts/` に置いた時点で、Draft PR であっても誰でも読める。書くと決めていないネタ・公開留保がかかったもの・取り下げたものは、リポジトリ外のネタ管理先で別管理する（`AGENTS.md` §2）。
 
 - 変換で `topics` が5件超になると切り詰め警告が出る。落とす対象が妥当か確認し、必要なら `--topics` で明示する。
 - 未マップのタグは警告に出る。`config/zenn.json` の `tag_to_topic` に追加する。

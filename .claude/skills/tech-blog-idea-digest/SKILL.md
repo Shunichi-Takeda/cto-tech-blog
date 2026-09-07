@@ -1,6 +1,6 @@
 ---
 name: tech-blog-idea-digest
-description: 直近のClaude Codeセッション履歴（デフォルト：ここ1週間）を棚卸しし、公開可能なTech Blog記事ネタを一覧化して提示 → ユーザーに書き出すネタを選ばせ → 書くと決めたものは cto-tech-blog の articles/drafts/ に、まだ決めていないものは非公開リポジトリの ideas/ に記事ファイルを生成する。ユーザーが「ここ1週間のセッションからTech Blogネタを出して」「記事ネタを一覧化して」「今週の作業からブログのネタある？」「Tech Blogに書けそうなネタを棚卸しして」のように言ったら使う。**重要な区別**: [[weekly-report]]/[[daily-report]] は経営層向けの業務報告で社外公開はしない。[[stock-productivity-comparison-report]] はClaude利用時間 vs 手動のROI比較。[[stock-narekan-ai-tips-article]] は社内Wiki（ナレカン）向けの横展開記事。本Skillはそれらと異なり、**社外公開するTech Blog（cto-tech-blog リポジトリ）の記事ネタ抽出〜記事ファイル生成**が目的。社外発信・技術ブログ・記事化という文脈ならこれを使う。
+description: 直近のClaude Codeセッション履歴（デフォルト：ここ1週間）を棚卸しし、公開可能なTech Blog記事ネタを一覧化して提示 → ユーザーに書き出すネタを選ばせ → 書くと決めたものは cto-tech-blog の articles/drafts/ に草案ファイルを生成し、まだ決めていないものはリポジトリ外のネタ管理先（Stockノート等）へ起票する内容として提示する。ユーザーが「ここ1週間のセッションからTech Blogネタを出して」「記事ネタを一覧化して」「今週の作業からブログのネタある？」「Tech Blogに書けそうなネタを棚卸しして」のように言ったら使う。**重要な区別**: [[weekly-report]]/[[daily-report]] は経営層向けの業務報告で社外公開はしない。[[stock-productivity-comparison-report]] はClaude利用時間 vs 手動のROI比較。[[stock-narekan-ai-tips-article]] は社内Wiki（ナレカン）向けの横展開記事。本Skillはそれらと異なり、**社外公開するTech Blog（cto-tech-blog リポジトリ）の記事ネタ抽出〜記事ファイル生成**が目的。社外発信・技術ブログ・記事化という文脈ならこれを使う。
 ---
 
 # Tech Blog 記事ネタ棚卸し → 記事化
@@ -38,7 +38,7 @@ description: 直近のClaude Codeセッション履歴（デフォルト：こ�
    - snippet から技術的な核（**原因・対策・使った仕組み**）を拾う。1タイトル=1記事と決めつけない。
 3. 各セッションについて「何をやったか」「どんな技術的判断・課題解決があったか」を1〜2行でメモ化する。
 
-> このリポジトリの `articles/drafts/` と、非公開リポジトリ（既定 `../stock-ontology`）の `articles/ideas/` を先に一覧し、**既に起票済み/執筆済みのネタは重複提案しない**こと。
+> このリポジトリの `articles/drafts/` と公開済み記事を先に一覧し、**既に執筆済みのネタは重複提案しない**こと。ネタ管理先に起票済みのものはこちらから参照できないため、重複の可能性があるものはユーザーに確認する。
 
 ---
 
@@ -106,11 +106,11 @@ description: 直近のClaude Codeセッション履歴（デフォルト：こ�
 ユーザーが選んだネタについてのみ実行する。
 
 ### 4-1. 作成先とテンプレート
-- `ideas/` を選択 → **非公開リポジトリ**（既定 `../stock-ontology`）で `templates/idea_template.md` をベースに `articles/ideas/YYYY-MM-DD_slug.md` を作成（`stage: idea`）。
-  `ideas/` は「**いま出さないもの**」の置き場（未着手のネタ／公開留保で解禁待ちの完成草案／取り下げたもの）。
+- ネタ段階を選択 → **リポジトリ外のネタ管理先**（Stock ノート等）へ起票する内容をユーザーに提示する。本リポジトリにはファイルを作らない。
+  ネタ管理先は「**いま出さないもの**」の置き場（未着手のネタ／公開留保で解禁待ちの完成草案／取り下げたもの）。
   **一次観察が取れないネタはここに留める。**
   本リポジトリは public なので、この段階のものを持ち込まない（`AGENTS.md` §2）。
-  `drafts/` へ昇格させたら `ideas/` 側は削除する（昇格は移動であって複製ではない）。
+  `drafts/` へ昇格させたら、ネタ管理先の該当ネタは消す（昇格は移動であって複製ではない）。
 - `drafts/` を選択 → `templates/article_template.md` をベースに `articles/drafts/YYYY-MM-DD_slug.md` を作成（`stage: draft`）。本文は「課題 → アプローチ → 結果 → 学び」の構造で埋める（`AGENTS.md` §5.3）。
 
 ### 4-2. 命名・Frontmatter（`AGENTS.md` §3, §4）
@@ -188,7 +188,7 @@ Tech Blog の読者（中〜上級エンジニア）は、抽象的な教訓や�
 ### 4-5. Zenn 公開への引き継ぎ
 `drafts/` に草案を作った場合、その先の公開フローは [PUBLISHING.md](../../../PUBLISHING.md) を正とする。**ユーザーの指示があった場合のみ** `python3 scripts/draft_to_zenn.py <草案>` で `articles/<slug>.md`（`published: false`）に変換し、`python3 scripts/validate_zenn.py` でエラー0を確認する。**`published: true` への変更・merge は行わない**（`AGENTS.md` §8-6）。
 
-> ⚠️ **本リポジトリは public である。** ネタの段階（書くと決めていない、公開留保がかかっている、取り下げた）のものを `articles/drafts/` に置いてはならない。それらは非公開リポジトリの `ideas/` で管理する（`AGENTS.md` §2）。**本リポジトリに `articles/ideas/` は作らない。**
+> ⚠️ **本リポジトリは public である。** ネタの段階（書くと決めていない、公開留保がかかっている、取り下げた）のものを `articles/drafts/` に置いてはならない。それらはリポジトリ外のネタ管理先で管理する（`AGENTS.md` §2）。**本リポジトリに `articles/ideas/` は作らない。**
 
 ### 4-6. 完了報告
 作成したファイルパスと、各ファイルの1行サマリを提示する。
@@ -203,7 +203,7 @@ Tech Blog の読者（中〜上級エンジニア）は、抽象的な教訓や�
 - **公開安全化を口実に、仕組み・具体まで削って抽象論だけの記事にする**（§4-3 違反）。汎化と「具体を消すこと」は別。
 - テンプレートの見出しをそのまま残す（＝書き直しになる）。
 - 想定される反論への「回答」を自分で書く（論点を立てて著者に問い返すまでが範囲）。
-- 一次観察が取れないネタを `drafts/` に上げる（`IDEA_SOURCING.md` §3.6。`ideas/` に留める）。
+- 一次観察が取れないネタを `drafts/` に上げる（ネタ管理先に留める）。
 - 経営層向け業務報告（weekly/daily-report）と混同して、社外公開に不適な内部詳細を書く。
 - 公開可否をAI側で判断する／勝手にコミット・push・公開する。
 - `published: true` に書き換える、または main に merge する（＝Zennへの公開そのもの）。
