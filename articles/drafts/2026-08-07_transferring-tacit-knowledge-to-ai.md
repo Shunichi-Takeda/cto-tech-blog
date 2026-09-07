@@ -14,7 +14,6 @@ tags:
   - プロンプト
 category: "ai-agents"
 description: "非エンジニア部門の定型業務をAIに移管するとき、過去の完成物を大量に読ませても手直しは減らない。減らすには、完成物に至るまでの判断観点を渡す必要がある。その理由と移管の進め方を整理する。"
-source_context: "非エンジニア部門の定型業務をAIへ移管する支援を行う中で、成果物ベースの指示が機能しない理由と、過程を形式知化するアプローチに転換した経緯。"
 published_url: "https://zenn.dev/stock_inc/articles/transferring-tacit-knowledge-to-ai"
 ---
 

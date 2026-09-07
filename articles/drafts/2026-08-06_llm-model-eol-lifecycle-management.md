@@ -14,7 +14,6 @@ tags:
   - 運用
 category: "ai-agents"
 description: "LLMには提供終了がある。モデルIDの差し替えでは移行が終わらず、壊れるのはコードではなくプロンプトである。モデルライフサイクル管理の考え方をまとめる。"
-source_context: "利用モデルの提供終了に伴う移行対応と、次期モデルの比較検討を通じて得た設計指針。"
 published_url: "https://zenn.dev/stock_inc/articles/llm-model-eol-lifecycle-management"
 ---
 

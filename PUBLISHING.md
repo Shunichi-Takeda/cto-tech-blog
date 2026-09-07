@@ -88,7 +88,7 @@ python3 scripts/draft_to_zenn.py articles/drafts/2026-08-06_ecs-task-definition-
 | 本文 | 先頭 H1 を削除（Zenn はタイトルを別に描画するため）、草案テンプレートの著者ブロックを除去 |
 | 著者欄 | UTM付きリンクのフッタを付与（文面は `config/zenn.json` の `footer`） |
 | 出力先 | `articles/<slug>.md`（`slug` は Zenn 制約 `a-z0-9 - _` の12〜50文字。満たさなければエラー） |
-| 草案メタ | `stage` / `source_context` などは**持ち込まない**（Zenn は本文の HTML を解釈しないため、コメントが読者に表示されてしまう。草案との対応は slug で辿る） |
+| 草案メタ | `stage` などは**持ち込まない**（草案との対応は slug で辿る） |
 
 主なオプション: `--dry-run`（標準出力に出すだけ）、`--topics aws,ecs,cicd`、`--emoji`、`--type`、`--slug`、`--force`（上書き）。
 

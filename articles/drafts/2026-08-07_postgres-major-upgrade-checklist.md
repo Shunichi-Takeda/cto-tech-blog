@@ -14,7 +14,6 @@ tags:
   - devops
 category: "devops"
 description: "pg_upgradeは統計情報を引き継がない。この一点を作業後チェックリストに入れていない手順書は、アップグレード直後にプランナが暴れて詰まる。メジャーアップグレードの手順設計で何を書いておくべきかを整理する。"
-source_context: "PostgreSQL 14系のサポート終了に向けたメジャーアップグレード計画の策定にあたり、手順に何を含めるべきかを整理した設計検討。"
 published_url: "https://zenn.dev/stock_inc/articles/postgres-major-upgrade-checklist"
 ---
 

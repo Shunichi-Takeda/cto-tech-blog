@@ -15,7 +15,6 @@ tags:
   - デバッグ
 category: "ai-agents"
 description: "OCRが埋め込む透明テキストレイヤーのずれを、半透明化して可視化することで特定した事例。数値だけを見ていたAIエージェントに『目』を与え、座標変換行列で解決するまで。"
-source_context: "PDFのOCRテキストレイヤーが横向きページでずれる問題の調査・修正中に、透明テキストを半透明で可視化するデバッグ手法で原因特定・修正検証を行った。"
 published_url: "https://zenn.dev/stock_inc/articles/ai-agent-invisible-ocr-debug"
 ---
 

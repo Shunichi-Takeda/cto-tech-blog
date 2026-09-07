@@ -75,7 +75,7 @@ description: ユーザーが指定した特定のClaude Codeセッション（1�
 
 ### 5-2. 命名・Frontmatter（`AGENTS.md` §3, §4）
 - ファイル名 `YYYY-MM-DD_slug.md`（`YYYY-MM-DD` は作成日、`slug` は英数字ケバブケース）。
-- `author: "武田 峻一"` / `author_github: "Shunichi-Takeda"` / `date` は本日 / `category`・`tags` は §6 / `source_context` は公開安全化済みの表現で。
+- `author: "武田 峻一"` / `author_github: "Shunichi-Takeda"` / `date` は本日 / `category`・`tags` は §6。**着想元の業務文脈（`source_context`）は書かない** — 本リポジトリは public であり、記事の題材ではなく社内の取り組みが読み取れてしまう。
 
 ### 5-3. 記事の質基準：「仕組み」と「具体」を最優先で書く ← Tech Blog読者が最も求める点
 Tech Blog の読者（中〜上級エンジニア）は、抽象論では満足しない。**「具体的にどうやっているのか（仕組み）」「実際のコード・手順・落とし穴（具体）」**を求める。必達要件:

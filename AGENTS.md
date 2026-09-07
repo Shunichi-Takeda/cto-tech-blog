@@ -110,7 +110,6 @@ tags:
   - タグ2
 category: "カテゴリ"
 description: "記事の概要（1-2文）"
-source_context: "この記事のきっかけとなった業務・技術的背景"
 published_url: ""  # 公開後に記入
 ---
 ```
@@ -145,7 +144,7 @@ publication_name: "stock_inc"
 | `category` | `emoji` / `type` | `config/zenn.json` の対応表 |
 | `tags` | `topics` | `config/zenn.json` の `tag_to_topic`、5件まで |
 | `slug` | ファイル名 | `a-z0-9 - _` の12〜50文字 |
-| `stage` / `source_context` | （本文冒頭のHTMLコメント） | Zenn では非表示 |
+| `stage` | （持ち込まない） | Zenn 記事側では扱わない |
 
 > ⚠️ **AIエージェントは `published: true` への変更を行わない。** 公開はレビュー承認後に人が実施する（§8-4）。
 
@@ -327,3 +326,4 @@ AIがやるのは**論点を立てて著者に問い返すところまで**で�
 7. **公開済み記事のファイル（`articles/<slug>.md`）を移動・削除しない** — Zenn 側の記事整合が壊れる（[PUBLISHING.md](./PUBLISHING.md) §1）
 8. **想定される反論への「回答」をAIが書かない** — 論点を立てて著者に問い返すまでが範囲。判断の中身を代筆すると一般論になる（§5.4.1）
 9. **書くと決めていないネタを本リポジトリに置かない** — public なので、`articles/drafts/` に入れた時点で題材が外から見える。判断がついていないものはネタ管理先に置く（§2）
+10. **着想元の業務文脈を草案に書かない** — `source_context` のような「なぜ書いたか」の記録は、記事の題材ではなく社内の取り組みを露出させる。記録が必要ならネタ管理先に置く。`scripts/validate_zenn.py` が草案側も検査する

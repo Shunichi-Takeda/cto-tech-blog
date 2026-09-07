@@ -17,7 +17,8 @@
 
 体裁・校正は **Zenn のレビュー機能**で行います（`https://zenn.dev/articles/<slug>/review`）。**このブランチに push した時点で Zenn の下書きになっている**ので、merge を待つ必要はありません。この PR では技術面だけ確認します。
 
-- [ ] `python3 scripts/validate_zenn.py` がエラー0（CIでも実行されます）
+- [ ] `python3 scripts/validate_zenn.py` がエラー0（記事と草案の両方を検査。CIでも実行されます）
+- [ ] 草案に内部レビューメモ・着想元の業務文脈（`source_context`）を残していない — public なので Zenn に出ない記述も公開される
 - [ ] 機密情報ガード（顧客名・内部数値・非公開仕様・社内URL・個人名）を通過（AGENTS.md §5.4）
 - [ ] 競合ガード（公開可否判定）を通過 — 機密ガードの通過だけでは不十分
 - [ ] 文体判定を通過 — AI生成物の質感が残っていない

@@ -15,7 +15,6 @@ tags:
   - 開発プロセス
 category: "ai-agents"
 description: "稼働時間帯がそろわないチームで、メンバーに追加の報告作業を課さず、既存ツールに残った痕跡だけからAIエージェントが進捗レポートを自動生成する仕組み。"
-source_context: "開発チームのデイリーレポート自動生成の実運用から"
 published_url: "https://zenn.dev/stock_inc/articles/ai-agent-daily-report-zero-overhead"
 ---
 

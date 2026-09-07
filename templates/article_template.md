@@ -11,7 +11,6 @@ tags:
   - タグ2
 category: "engineering"
 description: "記事の概要を1-2文で記載"
-source_context: "この記事のきっかけとなった業務・技術的背景"
 published_url: ""
 ---
 

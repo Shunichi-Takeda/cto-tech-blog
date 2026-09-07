@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: frontmatter と公開ガードの検証
+      - name: frontmatter と公開ガードの検証（記事・草案の両方）
         run: python3 scripts/validate_zenn.py
       - name: 公開済み索引が最新か検査
         if: github.event_name == 'push'

@@ -14,7 +14,6 @@ tags:
   - devops
 category: "devops"
 description: "「ECSタスク定義を1つ前のリビジョンに戻す」を切り戻し手順にしていたが、実測するとリビジョン間の差分は0件だった。可変タグ参照でロールバックが成立しない仕組みと、その修正。"
-source_context: "リリース手順の切り戻し方法を棚卸しした際、タスク定義リビジョンの差分を実測したところ0件であることが判明し、イメージ参照のバージョン固定に設計変更した。"
 published_url: "https://zenn.dev/stock_inc/articles/ecs-task-definition-rollback-illusion"
 ---
 

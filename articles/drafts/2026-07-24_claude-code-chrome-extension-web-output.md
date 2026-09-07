@@ -14,7 +14,6 @@ tags:
   - 自動化
 category: "ai-agents"
 description: "Claude Codeの内蔵隔離ブラウザとChrome拡張の使い分けを軸に、ログイン済みの実Chromeへ相乗りして社内Webを読み書きし、調査からWeb出力までを1セッションで往復する仕組みと安全設計。"
-source_context: "ログイン必須の社内SaaSからの記事取得を実ブラウザ操作へ一本化する作業の中で、Claude Codeと実Chromeが同一セッションで往復できることに気づいた運用設計。"
 published_url: "https://zenn.dev/stock_inc/articles/claude-code-chrome-extension-web-output"
 ---
 

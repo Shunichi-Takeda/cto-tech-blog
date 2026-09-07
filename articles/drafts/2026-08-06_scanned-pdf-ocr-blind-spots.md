@@ -13,7 +13,6 @@ tags:
   - 運用
 category: "engineering"
 description: "スキャンPDFのOCR失敗は、認識精度ではなく回転メタデータ・ページ境界・監視設計に起因する3類型に分けられる。エンジンを差し替えても直らない失敗の見分け方。"
-source_context: "スキャンPDFのテキスト抽出が期待通りに動かない事象の原因切り分けを通じて得た、失敗パターンの分類。"
 published_url: "https://zenn.dev/stock_inc/articles/scanned-pdf-ocr-blind-spots"
 ---
 

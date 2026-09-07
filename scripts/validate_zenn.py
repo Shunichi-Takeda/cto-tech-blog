@@ -4,6 +4,11 @@
   python3 scripts/validate_zenn.py            # articles/*.md を全件検証
   python3 scripts/validate_zenn.py articles/foo.md
 
+検証対象は2つある。
+
+  articles/*.md        Zenn が読む記事の正本
+  articles/drafts/*.md 草案。本リポジトリは public なので、Zenn に出ない記述も公開される
+
 検証項目（Zenn 側で弾かれる／公開後に事故になるもの）:
   - ファイル名（= slug）が a-z0-9 - _ の 12〜50 文字
   - title / emoji（1文字） / type（tech|idea） / topics（1〜5件） / published（真偽値）
@@ -30,6 +35,15 @@ FORBIDDEN_PATTERNS = [
     (r"(?i)(aws_secret|api[_-]?key\s*=\s*['\"][A-Za-z0-9/+=]{16,})", "認証情報らしい値"),
 ]
 PLACEHOLDER_PATTERNS = [r"TODO", r"FIXME", r"XXX", r"タイトル案", r"未確定", r"〇〇"]
+
+# 草案にだけ現れ、Zenn 記事には変換時に落ちるもの。
+# draft_to_zenn.py が除去するため Zenn には出ないが、本リポジトリは public なので
+# GitHub 上では公開される。落とし忘れを CI で止める。
+DRAFT_ONLY_LEAKS = [
+    (r"(?m)^source_context:", "着想元の業務文脈（source_context）。記事の題材ではなく社内の取り組みが読み取れる"),
+    (r"書き直しメモ|レビュー用メモ|公開留保", "内部レビューメモ"),
+    (r"voice\.md|disclosure\.md|公理A\d|OriginalityMarker|CarrierShift|disc:[A-Z]", "非公開オントロジーの参照・内部用語"),
+]
 
 # GitHub の rich diff では正しく描画されない Zenn 独自記法。
 # 使っている記事はレビュー時にローカルプレビュー（npm run preview）が必要になる。
@@ -138,22 +152,47 @@ def check(path, config):
     return ["%s: %s" % (rel, e) for e in errors], ["%s: %s" % (rel, w) for w in warnings]
 
 
+def check_draft(path):
+    """草案を検査する。Zenn の frontmatter 制約は掛からないが、公開されることは同じ。"""
+    errors = []
+    rel = os.path.relpath(path, REPO_ROOT)
+    text = open(path, encoding="utf-8").read()
+    for pattern, label in DRAFT_ONLY_LEAKS + FORBIDDEN_PATTERNS:
+        m = re.search(pattern, text)
+        if m:
+            errors.append("%s: 公開したくない記述が残っています（%s）: %r"
+                          % (rel, label, m.group(0)[:40]))
+    return errors, []
+
+
 def main():
     config = load_config()
-    targets = sys.argv[1:] or sorted(glob.glob(os.path.join(REPO_ROOT, "articles", "*.md")))
-    if not targets:
-        print("articles/ 直下に Zenn 記事はまだありません")
+    explicit = sys.argv[1:]
+    if explicit:
+        targets, drafts = [], []
+        for path in explicit:
+            (drafts if os.sep + "drafts" + os.sep in path else targets).append(path)
+    else:
+        targets = sorted(glob.glob(os.path.join(REPO_ROOT, "articles", "*.md")))
+        drafts = sorted(glob.glob(os.path.join(REPO_ROOT, "articles", "drafts", "*.md")))
+    if not targets and not drafts:
+        print("検証対象がありません")
         return 0
     all_errors, all_warnings = [], []
     for path in targets:
         errors, warnings = check(path, config)
         all_errors += errors
         all_warnings += warnings
+    for path in drafts:
+        errors, warnings = check_draft(path)
+        all_errors += errors
+        all_warnings += warnings
     for w in all_warnings:
         print("WARN  %s" % w)
     for e in all_errors:
         print("ERROR %s" % e)
-    print("\n%d 件を検証: エラー %d 件 / 警告 %d 件" % (len(targets), len(all_errors), len(all_warnings)))
+    print("\n記事 %d 件 / 草案 %d 件を検証: エラー %d 件 / 警告 %d 件"
+          % (len(targets), len(drafts), len(all_errors), len(all_warnings)))
     return 1 if all_errors else 0
 
 
