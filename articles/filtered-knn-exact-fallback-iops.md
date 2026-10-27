@@ -13,6 +13,8 @@ publication_name: "stock_inc"
 
 厄介なのは、そのあいだCPU使用率が2%前後で、1分平均のIOPSにも何も出ないことです。OpenSearch で k-NN を使っているなら、この記事のコマンド2つで自己診断できます。
 
+![CPUは暇なのに、タイムアウトで切った後もディスクは読み続けており、先に温めておくと落ち着く、という3場面のドット絵](/images/filtered-knn-exact-fallback-iops/overview.png)
+
 ## CPUは2%、それでも検索が止まった
 
 始まりは、ALB の `HTTPCode_Target_5XX_Count` が1分間だけ跳ねたアラートでした。ALB 自体の5XXはほぼ0件で、トラフィックも平常どおり。ECS のタスクも全部 healthy でした。

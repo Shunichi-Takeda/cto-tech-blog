@@ -13,6 +13,8 @@ publication_name: "stock_inc"
 
 待つ間に手元で打てたのは、前段のCDN（Cloudflare）の設定だけでした。結論を先に書くと、止めるべきだったのは「問い合わせフォーム」ではなく「PHPに届く multipart の要求すべて」で、そのためにフォームの方が止まる、という順番でした。
 
+![自分では直せないサーバーの手前にCDNの盾を置き、攻撃の要求を弾いて、更新が来るまで凌ぐ様子のドット絵](/images/shared-hosting-php-vuln-l7-stopgap/overview.png)
+
 ## 「うちは multipart を使っていない」は、安全の根拠にならなかった
 
 最初に考えたのは「どのフォームが攻撃に使われうるか」です。報じられていた攻撃は、`multipart/form-data` のPOSTを入口にするものでした。そこでコードベースを検索し、multipart を送る書き方（`enctype`、ファイル選択欄、`FormData`、`$_FILES`）を洗い出しました。
