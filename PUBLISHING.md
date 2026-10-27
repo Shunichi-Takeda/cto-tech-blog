@@ -246,4 +246,5 @@ frontmatter に `published_at: "YYYY-MM-DD HH:MM"`（JST）を書き、`publishe
 ## 6. その他
 
 - 記事内に画像を使う場合は `images/<slug>/` 配下に置き、`![](/images/<slug>/foo.png)` で参照する。
+- 記事ごとのイメージ図（ドット絵）は `images/<slug>/overview.png` に置き、`scripts/eyecatch/<slug>.py` で生成する。方針は AGENTS.md §5.8。
 - `books/.gitkeep` は、Zenn のデプロイ時に出る「booksディレクトリが見つかりませんでした」の通知を止めるためのもの（本は運用しない）。

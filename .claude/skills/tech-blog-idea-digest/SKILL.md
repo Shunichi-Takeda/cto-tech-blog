@@ -192,6 +192,7 @@ Tech Blog の読者（中〜上級エンジニア）は、抽象的な教訓や�
 - [ ] 外部エンジニアにとって再現可能な形になっている
 - [ ] タイトルが具体的で得られる知見が明確
 - [ ] §4-3 の「仕組み・具体」要件を満たしている
+- [ ] イメージ図（ドット絵）を1枚用意し、導入の直後に置いた（`AGENTS.md` §5.8）
 
 ### 4-5. Zenn 公開への引き継ぎ
 `drafts/` に草案を作った場合、その先の公開フローは [PUBLISHING.md](../../../PUBLISHING.md) を正とする。**ユーザーの指示があった場合のみ** `python3 scripts/draft_to_zenn.py <草案>` で `articles/<slug>.md`（`published: false`）に変換し、`python3 scripts/validate_zenn.py` でエラー0を確認する。**`published: true` への変更・merge は行わない**（`AGENTS.md` §8-6）。
