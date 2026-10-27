@@ -76,42 +76,62 @@ def ghost(x, y):
 
 
 # 背景の星
-for sx, sy in [(3, 4), (30, 2), (60, 30), (90, 31), (124, 1), (150, 30), (180, 3), (2, 30), (176, 28)]:
+for sx, sy in [(3, 4), (30, 2), (58, 33), (90, 3), (118, 36), (2, 36), (110, 8)]:
     cv.put(sx, sy, "lav")
 
-# 場面の区切り（細い点線）
-for gx in (62, 120):
-    for y in range(5, 44, 3):
-        cv.put(gx, y, "navy2")
-
+# --- 流れ: 課題ごとに作る → 完了で消す ---
 TY = 15          # カードと環境の上端
-SCENES = [
-    (8, "red", "run", "日中は動く"),
-    (66, "blue", "sleep", "夜は止める"),
-    (124, "orange", "done", "完了で消える"),
-]
-for gx, tab, state, caption in SCENES:
-    ticket(gx, TY, tab, done=(state == "done"))
-    arrow(gx + 21, TY + 6, 13, "yellow")
-    sx = gx + 36
-    if state == "done":
-        ghost(sx, TY)
-    else:
-        server(sx, TY, tab, state)
-    cv.text_center(gx + 26, 33, caption, "white")
+ticket(4, TY, "red")
+arrow(25, TY + 6, 13, "yellow")
+server(40, TY, "red", "run")
+cv.text_center(30, 33, "課題ごとに作る", "white")
 
-# 1: 太陽（日中は稼働）
-cv.sprite(8 + 40, 3, [
-    "#..#..#",
-    ".#.#.#.",
+ticket(62, TY, "orange", done=True)
+arrow(83, TY + 6, 13, "yellow")
+ghost(98, TY)
+cv.text_center(88, 33, "完了で消す", "white")
+
+# --- 見どころ: 1つを使い回すと混ざる / 課題ごとなら混ざらない ---
+PX, PY, PW, PH = 126, 5, 56, 38
+for i in range(PW):                              # 金色の枠
+    cv.put(PX + i, PY, "orange")
+    cv.put(PX + i, PY + PH - 1, "orange")
+for j in range(PH):
+    cv.put(PX, PY + j, "orange")
+    cv.put(PX + PW - 1, PY + j, "orange")
+cv.rect(PX + 1, PY + 1, PW - 2, PH - 2, "navy2")
+cv.sprite(PX + PW // 2 - 3, 0, [               # 電球（得られるもの）
     "..###..",
+    ".#####.",
     "#######",
+    "#######",
+    ".#####.",
     "..###..",
-    ".#.#.#.",
-    "#..#..#",
-], "orange")
-# 2: 月と Z（夜は停止）
-cv.sprite(66 + 39, 3, ["..###", ".##..", "##...", "##...", "##...", ".##..", "..###"], "yellow")
-cv.sprite(66 + 46, 1, ["####", "...#", "..#.", ".#..", "####"], "lav")
+    "..###..",
+], "yellow")
+cv.rect(PX + PW // 2 - 1, 7, 3, 1, "gray")
+for rx, ry in [(-6, 1), (-5, 4), (6, 1), (5, 4)]:  # 光の線
+    cv.put(PX + PW // 2 + rx, ry, "yellow")
+
+# 左: 1つの環境を使い回す → 色が混ざる
+mx, my = PX + 4, PY + 8
+cv.rect(mx + 1, my + 1, 20, 14, "black")
+cv.rect(mx, my, 20, 14, "gray")
+mixed = [["red", "blue", "orange", "blue"], ["orange", "red", "blue", "red"], ["blue", "orange", "red", "orange"]]
+for r, row in enumerate(mixed):
+    for c, col in enumerate(row):
+        cv.rect(mx + 2 + c * 4, my + 2 + r * 4, 3, 3, col)
+cv.sprite(mx + 8, my - 6, ["#...#", ".#.#.", "..#..", ".#.#.", "#...#"], "red")
+
+# 右: 課題ごとに分ける → 1色ずつ
+for k, col in enumerate(["red", "blue", "orange"]):
+    bx = PX + 30 + k * 8
+    cv.rect(bx + 1, my + 1, 6, 14, "black")
+    cv.rect(bx, my, 6, 14, "gray")
+    cv.rect(bx, my, 6, 2, col)
+    for r in range(3):
+        cv.rect(bx + 1, my + 3 + r * 4, 4, 3, col)
+cv.sprite(PX + 37, my - 6, ["......#", ".....##", "#...##.", "##.##..", ".###..."], "green")
+cv.text_center(PX + PW // 2, 33, "混ざらない", "yellow")
 
 cv.save(OUT)

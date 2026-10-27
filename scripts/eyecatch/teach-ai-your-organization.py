@@ -1,9 +1,10 @@
 """AIに開発を任せる前に、AIに会社を教える — イメージ図
 
-左から3場面を並べる。
-  1. 無難な案: ロボットだけが立っていて、出てくるのは灰色の無個性な箱
-  2. 会社を教える: ロボットが組織のナレッジの本を読んでいる（付箋つき）
-  3. 継ぎ目を見る: 設計・実装・テストのブロックが矢印でつながり、別のロボットが虫眼鏡で継ぎ目を見ている
+左に流れ（2場面）、右に見どころ。
+  流れ1. 無難な案: ロボットだけが立っていて、出てくるのは灰色の無個性な箱
+  流れ2. 会社を教える: ロボットが組織のナレッジの本を読んでいる（付箋つき）
+  見どころ: 工程のブロック1つだけを虫眼鏡で見る ✗ / ブロックの継ぎ目を見る ✓
+            一言「継ぎ目を見る」
 
   python3 scripts/eyecatch/teach-ai-your-organization.py
 """
@@ -46,66 +47,103 @@ def arrow(x, y, length, c):
     cv.sprite(x + length - 3, y - 2, ["#..", "##.", "###", "##.", "#.."], c)
 
 
+# --- 見どころ: 金色の枠と電球 ---
+PX, PY, PW, PH = 126, 5, 56, 38
+
+
+def panel():
+    for i in range(PW):                          # 金色の枠
+        cv.put(PX + i, PY, "orange")
+        cv.put(PX + i, PY + PH - 1, "orange")
+    for j in range(PH):
+        cv.put(PX, PY + j, "orange")
+        cv.put(PX + PW - 1, PY + j, "orange")
+    cv.rect(PX + 1, PY + 1, PW - 2, PH - 2, "navy2")
+    cv.sprite(PX + PW // 2 - 3, 0, [           # 電球（得られるもの）
+        "..###..",
+        ".#####.",
+        "#######",
+        "#######",
+        ".#####.",
+        "..###..",
+        "..###..",
+    ], "yellow")
+    cv.rect(PX + PW // 2 - 1, 7, 3, 1, "gray")
+    for rx, ry in [(-6, 1), (-5, 4), (6, 1), (5, 4)]:   # 光の線
+        cv.put(PX + PW // 2 + rx, ry, "yellow")
+
+
+def bad(x, y):
+    cv.sprite(x, y, ["#...#", ".#.#.", "..#..", ".#.#.", "#...#"], "red")
+
+
+def good(x, y):
+    cv.sprite(x, y, ["......#", ".....##", "#...##.", "##.##..", ".###..."], "green")
+
+
 # 背景の星
 for sx, sy in [(3, 4), (28, 2), (58, 30), (88, 2), (118, 31), (140, 2), (180, 4), (2, 30), (176, 29)]:
     cv.put(sx, sy, "lav")
 
-# 場面の区切り（細い点線）
-for gx in (62, 120):
-    for y in range(5, 44, 3):
-        cv.put(gx, y, "navy2")
-
 # 1: 無難な案 — ロボットだけ。出てくる箱はどれも同じ灰色
 robot(12, 9)
 arrow(27, 21, 8, "lav")
-for i, (bx, by) in enumerate([(37, 21), (46, 21), (41, 13)]):
+for bx, by in [(37, 21), (46, 21), (41, 13)]:
     box(bx, by, "gray")
+cv.text_center(30, 33, "無難な案", "white")
 
 # 2: 会社を教える — ロボットが本を読む
-robot(72, 9)
-# 開いた本（ロボットの手元から右へ）
-cv.rect(86, 15, 17, 12, "black")
-cv.rect(85, 14, 8, 11, "white")              # 左ページ
-cv.rect(93, 14, 8, 11, "white")              # 右ページ
-cv.rect(92, 14, 2, 11, "brown")              # 背
-cv.rect(85, 25, 16, 1, "brown")              # 表紙の下端
+robot(70, 9)
+cv.rect(85, 15, 17, 12, "black")
+cv.rect(84, 14, 8, 11, "white")              # 左ページ
+cv.rect(92, 14, 8, 11, "white")              # 右ページ
+cv.rect(91, 14, 2, 11, "brown")              # 背
+cv.rect(84, 25, 16, 1, "brown")              # 表紙の下端
 for k in range(4):                           # 行
-    cv.rect(86, 16 + k * 2, 5, 1, "gray")
-    cv.rect(95, 16 + k * 2, 5, 1, "gray")
-cv.rect(87, 11, 2, 4, "pink")                # 付箋
-cv.rect(90, 10, 2, 5, "yellow")
-cv.rect(96, 11, 2, 4, "green")
-cv.rect(99, 10, 2, 5, "blue")
+    cv.rect(85, 16 + k * 2, 5, 1, "gray")
+    cv.rect(94, 16 + k * 2, 5, 1, "gray")
+cv.rect(86, 11, 2, 4, "pink")                # 付箋
+cv.rect(89, 10, 2, 5, "yellow")
+cv.rect(95, 11, 2, 4, "green")
+cv.rect(98, 10, 2, 5, "blue")
+cv.text_center(88, 33, "会社を教える", "white")
 
-# 3: 継ぎ目を見る — 設計・実装・テストが矢印でつながり、継ぎ目を虫眼鏡で見る
-for bx, c in [(124, "blue"), (138, "orange"), (152, "green")]:
-    cv.rect(bx + 1, 7, 10, 8, "black")
-    cv.rect(bx, 6, 10, 8, c)
-    cv.rect(bx + 2, 8, 6, 1, "white")
-    cv.rect(bx + 2, 10, 4, 1, "white")
-    cv.rect(bx + 2, 12, 5, 1, "white")
-arrow(134, 10, 4, "yellow")
-arrow(148, 10, 4, "yellow")
-# 虫眼鏡（実装とテストの継ぎ目に重ねる）
-cv.sprite(145, 5, [
-    "..#####..",
-    ".#.....#.",
-    "#.......#",
-    "#.......#",
-    "#.......#",
-    "#.......#",
-    "#.......#",
-    ".#.....#.",
-    "..#####..",
-], "yellow")
-for k in range(5):                           # 柄（右下のロボットへ）
-    cv.rect(152 + k, 13 + k, 2, 2, "brown")
-# 別のロボット（目の色を変える）
-robot(160, 12, eye="green")
+# 3: 見どころ — 1つだけ見る ✗ / 継ぎ目を見る ✓
+panel()
 
-# ラベル
-cv.text_center(34, 33, "無難な案", "white")
-cv.text_center(92, 33, "会社を教える", "white")
-cv.text_center(150, 33, "継ぎ目を見る", "white")
+
+def steps(x, y):
+    """設計・実装・テストの3ブロック（幅6、すき間1）"""
+    for k, c in enumerate(["blue", "orange", "green"]):
+        cv.rect(x + k * 7 + 1, y + 1, 6, 7, "black")
+        cv.rect(x + k * 7, y, 6, 7, c)
+        cv.rect(x + k * 7 + 1, y + 2, 4, 1, "white")
+        cv.rect(x + k * 7 + 1, y + 4, 3, 1, "white")
+
+
+def lens(cx, cy):
+    """中心 (cx, cy) の虫眼鏡。柄は右下"""
+    cv.sprite(cx - 4, cy - 4, [
+        "..#####..",
+        ".#.....#.",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        ".#.....#.",
+        "..#####..",
+    ], "yellow")
+    for k in range(3):
+        cv.rect(cx + 4 + k, cy + 4 + k, 2, 2, "brown")
+
+
+steps(129, 17)
+lens(132, 20)                                # 設計のブロックだけを見ている
+bad(137, 8)
+steps(156, 17)
+lens(169, 20)                                # 実装とテストの継ぎ目を見ている
+good(164, 8)
+cv.text_center(PX + PW // 2, 33, "継ぎ目を見る", "yellow")
 
 cv.save(OUT)

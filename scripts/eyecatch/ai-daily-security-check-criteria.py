@@ -1,9 +1,11 @@
 """毎朝のセキュリティ確認をAIに任せる — イメージ図
 
-左から3場面を並べる。
-  1. 毎朝AIが見る: 朝日の下で、ロボット（AIエージェント）がログの紙束を読む
-  2. 色を付ける: 判定のランプ4色（赤・黄・緑・青）
-  3. 人は赤と黄: 人が立つのは赤と黄のランプの所だけ。緑と青には誰もいない
+左に流れ（2場面）、右に見どころ（金色の枠）。
+  流れ1 毎朝AIが見る: 朝日の下で、ロボット（AIエージェント）がログの紙束を読む
+  流れ2 色を付ける: 判定のランプ4色（赤・黄・緑・青）
+  見どころ 人が動くか:
+    ✗ ランプが全部赤。毎回赤なので、人は眠ってしまう
+    ✓ 色が分かれ、人が立つのは赤と黄のランプの上だけ
 
   python3 scripts/eyecatch/ai-daily-security-check-criteria.py
 """
@@ -70,32 +72,74 @@ def lamp_row(x, y, step):
         cv.sprite(x + k * step, y, LAMP, c)
 
 
+SMALL_LAMP = [".###.", "#####", "#####", ".###."]
+SMALL_PERSON = [".###.", ".###.", "..#..", "#####", "..#..", ".#.#.", "#...#"]
+SLEEPER = [                                                       # 横になって眠る人
+    ".##......",
+    ".########",
+    "....#####",
+    "....#...#",
+]
+
+
+def small_lamps(x, y, colors, step=6):
+    for k, c in enumerate(colors):
+        cv.sprite(x + k * step + 1, y + 1, SMALL_LAMP, "black")
+        cv.sprite(x + k * step, y, SMALL_LAMP, c)
+
+
 # 背景の星
-for sx, sy in [(3, 4), (30, 2), (60, 30), (90, 31), (124, 1), (150, 30), (180, 3), (2, 30), (176, 28)]:
+for sx, sy in [(3, 4), (30, 2), (58, 33), (90, 3), (118, 36), (2, 36), (110, 8)]:
     cv.put(sx, sy, "lav")
 
-# 場面の区切り（細い点線）
-for gx in (62, 120):
-    for y in range(5, 44, 3):
-        cv.put(gx, y, "navy2")
+# --- 流れ: 毎朝AIが見る → 色を付ける ---
+sunrise(34, 3)
+robot(8, 10)
+papers(27, 14)
+cv.text_center(30, 33, "毎朝AIが見る", "white")
 
-# 1: 毎朝AIが見る
-sunrise(42, 3)
-robot(16, 10)
-papers(34, 14)
+cv.rect(68, 12, 43, 15, "black")
+cv.rect(67, 11, 43, 15, "dgray")
+lamp_row(71, 16, 10)
+cv.text_center(88, 33, "色を付ける", "white")
 
-# 2: 色を付ける（判定のパネル）
-cv.rect(70, 12, 43, 15, "black")
-cv.rect(69, 11, 43, 15, "dgray")
-lamp_row(73, 16, 10)
+# --- 見どころ: 全部赤だと誰も動かない / 色を分けると人が動く所が決まる ---
+PX, PY, PW, PH = 126, 5, 56, 38
+for i in range(PW):                              # 金色の枠
+    cv.put(PX + i, PY, "orange")
+    cv.put(PX + i, PY + PH - 1, "orange")
+for j in range(PH):
+    cv.put(PX, PY + j, "orange")
+    cv.put(PX + PW - 1, PY + j, "orange")
+cv.rect(PX + 1, PY + 1, PW - 2, PH - 2, "navy2")
+cv.sprite(PX + PW // 2 - 3, 0, [               # 電球（得られるもの）
+    "..###..",
+    ".#####.",
+    "#######",
+    "#######",
+    ".#####.",
+    "..###..",
+    "..###..",
+], "yellow")
+cv.rect(PX + PW // 2 - 1, 7, 3, 1, "gray")
+for rx, ry in [(-6, 1), (-5, 4), (6, 1), (5, 4)]:  # 光の線
+    cv.put(PX + PW // 2 + rx, ry, "yellow")
 
-# 3: 人は赤と黄（人が動くのは赤と黄だけ）
-lamp_row(134, 21, 10)
-for k in (0, 1):                                                  # 赤と黄の上にだけ人が立つ
-    cv.sprite(133 + k * 10 + 1, 10 + 1, PERSON, "black")
-    cv.sprite(133 + k * 10, 10, PERSON, "white")
+LY = PY + 21                                     # ランプの上端
+# 左: ランプが全部赤 → 人は眠ってしまう
+small_lamps(PX + 2, LY, ["red", "red", "red"], step=7)
+cv.sprite(PX + 8, LY - 11, PERSON, "lav")
+cv.sprite(PX + 16, LY - 14, ["###", "..#", ".#.", "###"], "lav")
+cv.sprite(PX + 20, LY - 18, ["##", ".#", "##"], "lav")
+cv.sprite(PX + 3, PY + 3, ["#...#", ".#.#.", "..#..", ".#.#.", "#...#"], "red")
+for y in range(PY + 4, PY + 28, 2):              # 左右の仕切り
+    cv.put(PX + 24, y, "lav")
 
-for cx, label in [(31, "毎朝AIが見る"), (91, "色を付ける"), (152, "人は赤と黄")]:
-    cv.text_center(cx, 33, label, "white")
+# 右: 色が分かれ、赤と黄の上にだけ人が立つ
+small_lamps(PX + 27, LY, ["red", "yellow", "green", "blue"], step=7)
+for k in (0, 1):
+    cv.sprite(PX + 26 + k * 7, LY - 10, PERSON, "white")
+cv.sprite(PX + 44, PY + 3, ["......#", ".....##", "#...##.", "##.##..", ".###..."], "green")
+cv.text_center(PX + PW // 2, 33, "人が動くか", "yellow")
 
 cv.save(OUT)

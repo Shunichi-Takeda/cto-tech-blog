@@ -25,7 +25,7 @@ published_url: ""
 
 待つ間に手元で打てたのは、前段のCDN（Cloudflare）の設定だけでした。結論を先に書くと、止めるべきだったのは「問い合わせフォーム」ではなく「PHPに届く multipart の要求すべて」で、そのためにフォームの方が止まる、という順番でした。
 
-![自分では直せないサーバーの手前にCDNの盾を置き、攻撃の要求を弾いて、更新が来るまで凌ぐ様子のドット絵](/images/shared-hosting-php-vuln-l7-stopgap/overview.png)
+![自分では直せないサーバーの手前で、攻撃の要求をCDNの盾で弾く流れと、フォームの入口だけ塞いでも別の入口から入られるが、サーバー全体の前で止めれば入らない、という見どころのドット絵](/images/shared-hosting-php-vuln-l7-stopgap/overview.png)
 
 ## 「うちは multipart を使っていない」は、安全の根拠にならなかった
 

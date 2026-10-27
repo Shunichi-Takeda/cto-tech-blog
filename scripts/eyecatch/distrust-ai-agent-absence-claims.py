@@ -1,9 +1,10 @@
 """「ありません」と言い切るAIを疑う — イメージ図
 
-左から3場面を並べる。
-  1. 見た所に無い: ロボットが懐中電灯で箱を1つだけ照らし、その箱は空
-  2. 他の所に有る: 照らした箱は空のまま、照らしていない隣の箱から宝石がはみ出している
-  3. 見た所を書く: チェックリストに、見た所はチェック、見ていない所は「?」
+左に流れ（2場面）、右に見どころ。
+  流れ1. 見た所に無い: ロボットが懐中電灯で箱を1つだけ照らし、その箱は空
+  流れ2. 他の所に有る: 照らした箱は空のまま、照らしていない隣の箱から宝石がはみ出している
+  見どころ: 「無」とだけ言うロボット ✗ / 見た箱はチェック、見ていない箱は「?」の地図 ✓
+            一言「見た所を書く」
 
   python3 scripts/eyecatch/distrust-ai-agent-absence-claims.py
 """
@@ -64,14 +65,43 @@ def sparkle(x, y, c):
     cv.sprite(x, y, [".#.", "###", ".#."], c)
 
 
+# --- 見どころ: 金色の枠と電球 ---
+PX, PY, PW, PH = 126, 5, 56, 38
+
+
+def panel():
+    for i in range(PW):                          # 金色の枠
+        cv.put(PX + i, PY, "orange")
+        cv.put(PX + i, PY + PH - 1, "orange")
+    for j in range(PH):
+        cv.put(PX, PY + j, "orange")
+        cv.put(PX + PW - 1, PY + j, "orange")
+    cv.rect(PX + 1, PY + 1, PW - 2, PH - 2, "navy2")
+    cv.sprite(PX + PW // 2 - 3, 0, [           # 電球（得られるもの）
+        "..###..",
+        ".#####.",
+        "#######",
+        "#######",
+        ".#####.",
+        "..###..",
+        "..###..",
+    ], "yellow")
+    cv.rect(PX + PW // 2 - 1, 7, 3, 1, "gray")
+    for rx, ry in [(-6, 1), (-5, 4), (6, 1), (5, 4)]:   # 光の線
+        cv.put(PX + PW // 2 + rx, ry, "yellow")
+
+
+def bad(x, y):
+    cv.sprite(x, y, ["#...#", ".#.#.", "..#..", ".#.#.", "#...#"], "red")
+
+
+def good(x, y):
+    cv.sprite(x, y, ["......#", ".....##", "#...##.", "##.##..", ".###..."], "green")
+
+
 # 背景の星
 for sx, sy in [(3, 4), (30, 2), (58, 30), (88, 2), (118, 31), (176, 2), (2, 30), (110, 4)]:
     cv.put(sx, sy, "lav")
-
-# 場面の区切り（細い点線）
-for gx in (62, 120):
-    for y in range(5, 44, 3):
-        cv.put(gx, y, "navy2")
 
 # 1: 見た所に無い — 懐中電灯で1つだけ照らす。中は空
 robot(6, 10)
@@ -80,6 +110,7 @@ cv.rect(19, 20, 4, 3, "dgray")               # 懐中電灯
 cv.put(23, 21, "yellow")
 beam(24, 21, 38, 12, 28)
 open_box(40, 17, lit=True)
+cv.text_center(30, 33, "見た所に無い", "white")
 
 # 2: 他の所に有る — 照らした箱は空、隣の暗い箱から宝石
 beam(64, 20, 70, 12, 28)
@@ -88,24 +119,35 @@ open_box(92, 17, lit=False)
 gem(96, 13)
 sparkle(103, 10, "white")
 sparkle(91, 9, "pink")
+cv.text_center(88, 33, "他の所に有る", "white")
 
-# 3: 見た場所を書く — チェックリスト
-cv.rect(133, 4, 34, 26, "black")
-cv.rect(132, 3, 34, 26, "white")             # 紙
-cv.rect(144, 1, 10, 4, "dgray")              # クリップ
-for k, mark in enumerate(["ok", "ok", "q"]):
-    yy = 7 + k * 7
-    if mark == "ok":
-        cv.sprite(135, yy, ["....#", "...##", "#.##.", "###..", ".#..."], "dgreen")
-    else:
-        cv.sprite(136, yy - 1, [".##.", "#..#", "..#.", ".#..", "....", ".#.."], "orange")
-    cv.rect(143, yy + 2, 19 - k * 3, 1, "gray")
-    if mark == "q":
-        cv.rect(143, yy + 2, 16, 1, "orange")    # 見ていない場所の行を目立たせる
+# 3: 見どころ — 「無」とだけ言う ✗ / 見た所と見ていない所を書く ✓
+panel()
 
-# ラベル
-cv.text_center(34, 33, "見た所に無い", "white")
-cv.text_center(92, 33, "他の所に有る", "white")
-cv.text_center(150, 33, "見た所を書く", "white")
+# ✗: ロボットの頭と、「無」だけの吹き出し
+cv.rect(130, 18, 11, 8, "black")
+cv.rect(129, 17, 11, 8, "gray")
+cv.rect(131, 19, 2, 2, "blue")
+cv.rect(136, 19, 2, 2, "blue")
+cv.rect(132, 22, 5, 1, "dgray")
+cv.put(134, 16, "orange")
+cv.rect(142, 12, 11, 11, "white")            # 吹き出し
+cv.rect(141, 20, 2, 2, "white")              # 吹き出しのしっぽ
+cv.text_center(147.5, 13, "無", "dgray", shadow=None)
+bad(139, 7)
+
+# ✓: 箱の並びの地図。見た箱はチェック、見ていない箱は「?」
+for row in range(2):
+    for col in range(3):
+        bx, by = 156 + col * 8, 14 + row * 8
+        cv.rect(bx + 1, by + 1, 6, 6, "black")
+        if row == 0:                         # 見た箱
+            cv.rect(bx, by, 6, 6, "white")
+            cv.sprite(bx + 1, by + 1, ["...#", "..#.", "#.#.", ".#.."], "dgreen")
+        else:                                # 見ていない箱
+            cv.rect(bx, by, 6, 6, "dgray")
+            cv.sprite(bx + 2, by + 1, ["##", ".#", "#.", "..", "#."], "orange")
+good(165, 7)
+cv.text_center(PX + PW // 2, 33, "見た所を書く", "yellow")
 
 cv.save(OUT)
