@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-29"
 updated: "2026-10-29"
-stage: "draft"
+stage: "review"
 tags:
   - AI
   - LLM
