@@ -100,6 +100,8 @@
     "画像処理": "imageprocessing",
     "業務改善": "業務改善",
     "Amazon Bedrock": "bedrock",
-    "Zenn": "zenn"
+    "Zenn": "zenn",
+    "PHP": "php",
+    "Cloudflare": "cloudflare"
   }
 }
