@@ -4,7 +4,7 @@ emoji: "🛠️"
 type: "tech"
 topics: ["ruby", "rails", "debug", "設計"]
 published: false
-published_at: "2026-12-30 09:00"
+published_at: "2027-01-06 09:00"
 publication_name: "stock_inc"
 ---
 
