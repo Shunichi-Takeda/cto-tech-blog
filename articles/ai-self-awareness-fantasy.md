@@ -4,6 +4,7 @@ emoji: "🤖"
 type: "idea"
 topics: ["ai", "llm", "security"]
 published: false
+published_at: "2026-11-11 09:00"
 publication_name: "stock_inc"
 ---
 
