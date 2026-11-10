@@ -4,7 +4,7 @@ emoji: "🚢"
 type: "tech"
 topics: ["aws", "ecs", "githubactions", "cicd", "ai"]
 published: false
-published_at: "2026-11-18 09:00"
+published_at: "2026-12-02 09:00"
 publication_name: "stock_inc"
 ---
 
