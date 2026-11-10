@@ -3,8 +3,8 @@ title: "パッチを当てられない側の脆弱性対応 — 共有サーバ�
 emoji: "🚢"
 type: "tech"
 topics: ["security", "cloudflare", "php", "運用", "devops"]
-published: false
-published_at: "2026-10-28 10:00"
+published: true
+published_at: "2026-10-28 09:00"
 publication_name: "stock_inc"
 ---
 
