@@ -3,8 +3,8 @@ title: "毎朝のセキュリティ確認をAIに任せたら、判定の基準�
 emoji: "🤖"
 type: "tech"
 topics: ["ai", "security", "aws", "cloudwatch", "運用"]
-published: false
-published_at: "2026-11-04 09:00"
+published: true
+published_at: "2026-11-06 21:01"
 publication_name: "stock_inc"
 ---
 
