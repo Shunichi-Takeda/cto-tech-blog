@@ -22,3 +22,7 @@ python3 scripts/update_index.py
 | 2026-10-07 | AI活用の知見をClaude内に閉じ込めない — Claude Codeと実Chromeを『相乗り』させる | [articles/claude-code-chrome-extension-web-output.md](../claude-code-chrome-extension-web-output.md) | https://zenn.dev/stock_inc/articles/claude-code-chrome-extension-web-output |
 | 2026-10-14 | AIエージェントが「見えない不具合」をどう見つけたか — PDFの透明テキストレイヤーを可視化で解決した話 | [articles/ai-agent-invisible-ocr-debug.md](../ai-agent-invisible-ocr-debug.md) | https://zenn.dev/stock_inc/articles/ai-agent-invisible-ocr-debug |
 | 2026-10-21 | AIエージェントで「報告の手間ゼロ」のデイリーレポートを実現した話 | [articles/ai-agent-daily-report-zero-overhead.md](../ai-agent-daily-report-zero-overhead.md) | https://zenn.dev/stock_inc/articles/ai-agent-daily-report-zero-overhead |
+| 2026-10-28 | パッチを当てられない側の脆弱性対応 — 共有サーバーのPHP重大脆弱性を、CDNの手前で止血した | [articles/shared-hosting-php-vuln-l7-stopgap.md](../shared-hosting-php-vuln-l7-stopgap.md) | https://zenn.dev/stock_inc/articles/shared-hosting-php-vuln-l7-stopgap |
+| 2026-11-06 | 毎朝のセキュリティ確認をAIに任せたら、判定の基準が「人が動く必要があるか」に変わった | [articles/ai-daily-security-check-criteria.md](../ai-daily-security-check-criteria.md) | https://zenn.dev/stock_inc/articles/ai-daily-security-check-criteria |
+| 2026-11-11 | AIは自我を持った — セキュリティインシデント急増を眺めながらの与太話 | [articles/ai-self-awareness-fantasy.md](../ai-self-awareness-fantasy.md) | https://zenn.dev/stock_inc/articles/ai-self-awareness-fantasy |
+| 2026-11-18 | ビルドが落ちたものだけが見える — ベースイメージの更新放置は「静かな方」が危ない | [articles/base-image-silent-staleness.md](../base-image-silent-staleness.md) | https://zenn.dev/stock_inc/articles/base-image-silent-staleness |

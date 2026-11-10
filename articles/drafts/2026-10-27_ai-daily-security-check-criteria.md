@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-27"
 updated: "2026-10-27"
-stage: "draft"
+stage: "published"
 tags:
   - AIエージェント
   - セキュリティ
@@ -14,7 +14,7 @@ tags:
   - 運用
 category: "ai-agents"
 description: "本番環境への攻撃の兆候を、AIエージェントが平日の朝に読み取り専用で確認するルーティンを動かしている。動かし始めて1週間で判定の基準を3回変え、最後は「何が起きたか」ではなく「人が動く必要があるか」で色を決める形に落ち着いた。"
-published_url: ""
+published_url: "https://zenn.dev/stock_inc/articles/ai-daily-security-check-criteria"
 ---
 
 # 毎朝のセキュリティ確認をAIに任せたら、判定の基準が「人が動く必要があるか」に変わった

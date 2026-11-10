@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-27"
 updated: "2026-10-27"
-stage: "draft"
+stage: "published"
 tags:
   - セキュリティ
   - Cloudflare
@@ -14,7 +14,7 @@ tags:
   - devops
 category: "devops"
 description: "PHPの重大脆弱性に対し、パッチの適用をホスティング事業者に委ねるしかない状況で、CDN（Cloudflare）側で攻撃の入口を絞り、事業者のメンテナンス中は自動で戻るメンテナンス表示を出した記録。"
-published_url: ""
+published_url: "https://zenn.dev/stock_inc/articles/shared-hosting-php-vuln-l7-stopgap"
 ---
 
 # パッチを当てられない側の脆弱性対応 — 共有サーバーのPHP重大脆弱性を、CDNの手前で止血した

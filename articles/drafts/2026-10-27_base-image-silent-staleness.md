@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-27"
 updated: "2026-10-27"
-stage: "draft"
+stage: "published"
 tags:
   - Docker
   - ECR
@@ -14,7 +14,7 @@ tags:
   - devops
 category: "devops"
 description: "OSのサポート切れでビルドが止まったコンテナは、壊れることで更新を迫ってくる。危ないのは、ビルドが通り続けて何年も本番で動いているイメージの方だった。棚卸しの軸をビルドの成否からベースイメージの最終更新日に移した話。"
-published_url: ""
+published_url: "https://zenn.dev/stock_inc/articles/base-image-silent-staleness"
 ---
 
 # ビルドが落ちたものだけが見える — ベースイメージの更新放置は「静かな方」が危ない
