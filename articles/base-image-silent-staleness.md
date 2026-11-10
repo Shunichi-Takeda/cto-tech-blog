@@ -3,7 +3,7 @@ title: "ビルドが落ちたものだけが見える — ベースイメージ�
 emoji: "🚢"
 type: "tech"
 topics: ["docker", "ecr", "security", "運用", "devops"]
-published: false
+published: true
 published_at: "2026-11-18 09:00"
 publication_name: "stock_inc"
 ---
