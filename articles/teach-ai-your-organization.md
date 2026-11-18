@@ -3,7 +3,7 @@ title: "AIに開発を任せる前に、AIに会社を教える — 組織ナレ
 emoji: "🤖"
 type: "tech"
 topics: ["ai", "claudecode", "codereview", "チーム開発", "test"]
-published: false
+published: true
 published_at: "2026-11-25 09:00"
 publication_name: "stock_inc"
 ---
