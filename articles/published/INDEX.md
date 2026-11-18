@@ -26,3 +26,4 @@ python3 scripts/update_index.py
 | 2026-11-06 | 毎朝のセキュリティ確認をAIに任せたら、判定の基準が「人が動く必要があるか」に変わった | [articles/ai-daily-security-check-criteria.md](../ai-daily-security-check-criteria.md) | https://zenn.dev/stock_inc/articles/ai-daily-security-check-criteria |
 | 2026-11-11 | AIは自我を持った — セキュリティインシデント急増を眺めながらの与太話 | [articles/ai-self-awareness-fantasy.md](../ai-self-awareness-fantasy.md) | https://zenn.dev/stock_inc/articles/ai-self-awareness-fantasy |
 | 2026-11-18 | ビルドが落ちたものだけが見える — ベースイメージの更新放置は「静かな方」が危ない | [articles/base-image-silent-staleness.md](../base-image-silent-staleness.md) | https://zenn.dev/stock_inc/articles/base-image-silent-staleness |
+| 2026-11-25 | AIに開発を任せる前に、AIに会社を教える — 組織ナレッジと、工程を横断させるレビュー | [articles/teach-ai-your-organization.md](../teach-ai-your-organization.md) | https://zenn.dev/stock_inc/articles/teach-ai-your-organization |

@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-27"
 updated: "2026-10-27"
-stage: "review"
+stage: "published"
 tags:
   - AIエージェント
   - Claude Code
@@ -14,7 +14,7 @@ tags:
   - テスト
 category: "ai-agents"
 description: "AIに開発を任せたときの出力の確かさは、モデルの賢さより「その組織をどれだけ知っているか」と「工程のどこまでを通しで見せるか」で決まりました。組織横断のナレッジを育て、設計からSTGテストまでを1つの流れで回して分かったことの記録です。"
-published_url: ""
+published_url: "https://zenn.dev/stock_inc/articles/teach-ai-your-organization"
 ---
 
 # AIに開発を任せる前に、AIに会社を教える — 組織ナレッジと、工程を横断させるレビュー
