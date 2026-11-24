@@ -27,3 +27,4 @@ python3 scripts/update_index.py
 | 2026-11-11 | AIは自我を持った — セキュリティインシデント急増を眺めながらの与太話 | [articles/ai-self-awareness-fantasy.md](../ai-self-awareness-fantasy.md) | https://zenn.dev/stock_inc/articles/ai-self-awareness-fantasy |
 | 2026-11-18 | ビルドが落ちたものだけが見える — ベースイメージの更新放置は「静かな方」が危ない | [articles/base-image-silent-staleness.md](../base-image-silent-staleness.md) | https://zenn.dev/stock_inc/articles/base-image-silent-staleness |
 | 2026-11-25 | AIに開発を任せる前に、AIに会社を教える — 組織ナレッジと、工程を横断させるレビュー | [articles/teach-ai-your-organization.md](../teach-ai-your-organization.md) | https://zenn.dev/stock_inc/articles/teach-ai-your-organization |
+| 2026-12-02 | 「検証環境は1つで足りる」を撤回した — 課題ごとに作って消すプレビュー環境 | [articles/per-issue-preview-environments.md](../per-issue-preview-environments.md) | https://zenn.dev/stock_inc/articles/per-issue-preview-environments |

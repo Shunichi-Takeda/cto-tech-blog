@@ -5,7 +5,7 @@ author: "武田 峻一"
 author_github: "Shunichi-Takeda"
 date: "2026-10-27"
 updated: "2026-10-27"
-stage: "review"
+stage: "published"
 tags:
   - AWS
   - ECS
@@ -14,7 +14,7 @@ tags:
   - AIエージェント
 category: "devops"
 description: "AIエージェントが設計からDraft PRまで作るようになると、次に詰まるのは検証環境でした。「1環境を直列で使えば足りる」と決めた設計を、実案件で1件通した日に撤回し、課題ごとに作って消す形へ作り直した記録です。"
-published_url: ""
+published_url: "https://zenn.dev/stock_inc/articles/per-issue-preview-environments"
 ---
 
 # 「検証環境は1つで足りる」を撤回した — 課題ごとに作って消すプレビュー環境
