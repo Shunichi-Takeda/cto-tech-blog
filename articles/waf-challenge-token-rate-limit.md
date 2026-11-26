@@ -4,7 +4,6 @@ emoji: "🚢"
 type: "tech"
 topics: ["aws", "security", "設計", "運用", "devops"]
 published: false
-published_at: "2026-12-30 09:00"
 publication_name: "stock_inc"
 ---
 
