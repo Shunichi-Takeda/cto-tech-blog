@@ -3,8 +3,7 @@ title: "「検証環境は1つで足りる」を撤回した — 課題ごとに
 emoji: "🚢"
 type: "tech"
 topics: ["aws", "ecs", "githubactions", "cicd", "ai"]
-published: true
-published_at: "2026-12-02 09:00"
+published: false
 publication_name: "stock_inc"
 ---
 
