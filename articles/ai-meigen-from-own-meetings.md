@@ -4,7 +4,6 @@ emoji: "🤖"
 type: "tech"
 topics: ["ai", "claudecode", "promptengineering", "業務改善"]
 published: false
-published_at: "2026-12-16 09:00"
 publication_name: "stock_inc"
 ---
 
