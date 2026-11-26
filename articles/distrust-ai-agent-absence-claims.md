@@ -4,7 +4,6 @@ emoji: "🤖"
 type: "tech"
 topics: ["ai", "claudecode", "debug", "チーム開発"]
 published: false
-published_at: "2027-01-06 09:00"
 publication_name: "stock_inc"
 ---
 
