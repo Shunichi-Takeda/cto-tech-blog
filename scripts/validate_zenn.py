@@ -99,6 +99,10 @@ def check(path, config):
     published = str(fm.get("published", "")).lower()
     if published not in ("true", "false"):
         errors.append("published は true / false で指定してください: %r" % fm.get("published"))
+    if published == "false" and fm.get("published_at"):
+        errors.append("published: false のまま published_at があります。Zenn はこのデプロイを中断します"
+                      "（ブランチの下書きも更新されず、main ならデプロイ全体が止まる）。"
+                      "公開予定日は PR のタイトルに書き、published_at は予約するときに published: true と一緒に入れてください")
 
     expected_pub = config["publication_name"]
     if fm.get("publication_name") != expected_pub:
